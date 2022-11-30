@@ -46,9 +46,17 @@ namespace ControleDeContatos.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult ApagarConfirmacao()
+        public IActionResult ApagarConfirmacao(int ID)
         {
-            return View();
+            ContatoModel contato = _contatoRepositorio.ListarPorId(ID);
+            return View(contato);
         }
+
+        public IActionResult Apagar(int ID)
+        {
+            _contatoRepositorio.Apagar(ID);
+            return RedirectToAction("Index");
+        }
+
     }
 }
